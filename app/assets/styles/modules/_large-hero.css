@@ -26,10 +26,10 @@
 
   &__description {
     color: #FFF;
-    font-size: 1.875rem;
+    font-size: 1.875rem;                          /* Emulate 30pixels .. 30/16px = 1.875 */
     font-weight: 100;
-    text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
-    max-width: 30rem;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);   /* Top, Left, z-index (0/-1 - underneath!, Colour & Opacity 10% */
+    max-width: 30rem;                             /* 480px/16px = 30rem */
     margin-left: auto;
     margin-right: auto;
   }

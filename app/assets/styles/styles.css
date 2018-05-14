@@ -1,5 +1,19 @@
 @import "normalize.css";
+
+/* If you go back to the web browser, before I refresh, I want you to pay attention 
+   to this tiny white margin you see on the left and right side of the browser. 
+   So if I refresh, you can see it's gone. And you can thank normalize.css for that.
+
+   Normalize is an alternative to CSSResets. 
+   Its adjusts the styles of certain elements, in an effort to make all web browsers render things more consistently. 
+   Normalize is excellent. I recommend using it on all of your projects */
+
 @import "base/_global";
 @import "base/_variables";
 @import "modules/_large-hero";
 @import "modules/_btn";
+
+/* Although @import is a native function of CSS 
+   it is better to get postCSS to perform the import instead 
+   in the gulp CSS Workflow pipe (using postcss-import)
+    .. much faster performance of the final webpage */
