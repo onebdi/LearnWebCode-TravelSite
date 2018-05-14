@@ -2,15 +2,13 @@
 
 /**
  * 1. Change the default font family in all browsers (opinionated).
- * 2. Correct the line height in all browsers.
- * 3. Prevent adjustments of font size after orientation changes in IE and iOS.
+ * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
  */
 
 html {
   font-family: sans-serif; /* 1 */
-  line-height: 1.15; /* 2 */
-  -ms-text-size-adjust: 100%; /* 3 */
-  -webkit-text-size-adjust: 100%; /* 3 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
 }
 
 /**
@@ -117,8 +115,7 @@ a:hover {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -259,7 +256,6 @@ hr {
 
 button,
 input,
-optgroup,
 select,
 textarea {
   font: inherit; /* 1 */
