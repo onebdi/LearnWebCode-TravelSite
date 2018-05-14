@@ -2,15 +2,13 @@
 
 /**
  * 1. Change the default font family in all browsers (opinionated).
- * 2. Correct the line height in all browsers.
- * 3. Prevent adjustments of font size after orientation changes in IE and iOS.
+ * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
  */
 
 html {
   font-family: sans-serif; /* 1 */
-  line-height: 1.15; /* 2 */
-  -ms-text-size-adjust: 100%; /* 3 */
-  -webkit-text-size-adjust: 100%; /* 3 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
 }
 
 /**
@@ -117,8 +115,7 @@ a:hover {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -259,7 +256,6 @@ hr {
 
 button,
 input,
-optgroup,
 select,
 textarea {
   font: inherit; /* 1 */
@@ -422,14 +418,6 @@ textarea {
   font: inherit; /* 2 */
 }
 
-/* If you go back to the web browser, before I refresh, I want you to pay attention 
-   to this tiny white margin you see on the left and right side of the browser. 
-   So if I refresh, you can see it's gone. And you can thank normalize.css for that.
-
-   Normalize is an alternative to CSSResets. 
-   Its adjusts the styles of certain elements, in an effort to make all web browsers render things more consistently. 
-   Normalize is excellent. I recommend using it on all of your projects */
-
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
@@ -458,23 +446,51 @@ img {
 .large-hero__title {
   font-weight: 300;
   color: #2f5572;
-  font-size: 4.8rem;
   margin: 0;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 530px) {
+
+  .large-hero__title {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 800px) {
+
+  .large-hero__title {
+    font-size: 3.2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .large-hero__title {
+    font-size: 4.8rem;
+  }
 }
 
 .large-hero__subtitle {
   font-weight: 300;
   color: #2f5572;
-  font-size: 2.9rem;
+  font-size: 1.1rem;
   margin: 0;
+}
+
+@media (min-width: 530px) {
+
+  .large-hero__subtitle {
+    font-size: 2.9rem;
+  }
 }
 
 .large-hero__description {
   color: #FFF;
-  font-size: 1.875rem;/* Emulate 30pixels .. 30/16px = 1.875 */
+  font-size: 1.875rem;
   font-weight: 100;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);/* Top, Left, z-index (0/-1 - underneath!, Colour & Opacity 10% */
-  max-width: 30rem;/* 480px/16px = 30rem */
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
+  max-width: 30rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -482,13 +498,11 @@ img {
 .btn {
   background-color: #2f5572;
   color: #FFF;
-  text-decoration: none;              /* removes text underline */
-  padding: .75rem 1.2rem;             /* top-bottom, left-right */
+  text-decoration: none;
+  padding: .75rem 1.2rem;
   display: inline-block;
 
 }
-
-/* useful when using padding */
 
 .btn--orange {
   background-color: #d59541;
@@ -496,10 +510,5 @@ img {
 
 .btn--large {
   font-size: 1.25rem;
-  padding: 1.1rem 1.9rem;/* no font-size def'd - same as 1.0rem */
+  padding: 1.1rem 1.9rem;
 }
-
-/* Although @import is a native function of CSS 
-   it is better to get postCSS to perform the import instead 
-   in the gulp CSS Workflow pipe (using postcss-import)
-    .. much faster performance of the final webpage */
