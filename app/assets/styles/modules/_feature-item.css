@@ -5,7 +5,7 @@
   /* "We want the icon to be positioned in relation to its parent,
        lets's be sure to give the parent element position relative.  */
 
-  &mixin atSmall {
+  @mixin atSmall {
     padding-left: 94px;
   } 
 

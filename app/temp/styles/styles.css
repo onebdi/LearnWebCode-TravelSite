@@ -678,7 +678,7 @@ a {
 }
 
 .row--gutters-large{
-  padding-right: 100px;
+  margin-right: -100px;
 }
 
 .row--gutters > div {
@@ -798,8 +798,11 @@ a {
 /* "We want the icon to be positioned in relation to its parent,
        lets's be sure to give the parent element position relative.  */
 
-.feature-itemmixin atSmall {
-  padding-left: 94px;
+@media (min-width: 530px) {
+
+  .feature-item {
+    padding-left: 94px;
+  }
 }
 
 /* add vertical space between feature items in the same column */

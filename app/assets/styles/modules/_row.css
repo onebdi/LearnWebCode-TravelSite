@@ -7,7 +7,7 @@
   }
 
   &--gutters-large{
-    padding-right: 100px;
+    margin-right: -100px;
   }
 
   &--gutters > div {
