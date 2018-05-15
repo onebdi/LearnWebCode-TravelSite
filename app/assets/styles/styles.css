@@ -13,6 +13,8 @@
 @import "base/_mixins";
 @import "modules/_large-hero";
 @import "modules/_btn";
+@import "modules/_wrapper";
+@import "modules/_page-section";
 
 /* Although @import is a native function of CSS 
    it is better to get postCSS to perform the import instead 
