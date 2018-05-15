@@ -1,0 +1,51 @@
+.headline {
+  font-size: 1.9rem;                  /* smaller baseline fontsize for small screens */
+  font-weight: 300;
+  color: $mainBlue;
+
+  @mixin atSmall {
+    font-size: 2.875rem;              /* 46/16px = 2.875rem   */
+  }
+
+/*    N.B.  2.875 rem        is rendered as 1.0rem
+            2.875rem         is rendered as 2.875rem           
+
+        i.e. NO SPACES between the quantity and the unit!       */
+
+  &--centered {
+    text-align: center;
+  }
+
+  &--orange {
+    color: $mainOrange;
+  }
+
+  &--small {
+    font-size: 1.2rem;                /* smaller baseline fontsize for small screens */
+    @mixin atSmall {
+      font-size: 1.875rem;            /* 30/16px = 1.875rem */
+    }
+  }
+
+  &--narrow {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &--light {
+    font-weight: 100;
+  }
+
+  strong {
+    font-weight: 400;
+  }
+
+  &--b-margin-small {
+    margin-bottom: .5em;
+  }
+
+  &--b-margin-large {
+    margin-bottom: 1.6em;
+  }
+}

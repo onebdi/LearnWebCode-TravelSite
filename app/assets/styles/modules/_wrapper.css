@@ -4,4 +4,24 @@
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+
+  &--medium {                  /* narrower column than the default 1200px width column */
+    max-width: 976px;
+  }
+
+ /* "Note the way that this image is positioned and sized on small screens. The reason
+      the extra spacing exists is because we have a wrapper wrapped inside a wrapper. 
+
+     i.e. We have a div [class=wrapper wrapper--medium] surrounding the image, 
+           and this div is nested within another div [class=wrapper].
+
+     We don't want that nested padding effect to actually take place. 
+      So what we can do is to go into wrapper.css and let's just say 
+        that any wrapper inside another wrapper should no longer have any horizontal padding..." */
+
+  .wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
 }

@@ -2,13 +2,15 @@
 
 /**
  * 1. Change the default font family in all browsers (opinionated).
- * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in IE and iOS.
  */
 
 html {
   font-family: sans-serif; /* 1 */
-  -ms-text-size-adjust: 100%; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
 }
 
 /**
@@ -115,7 +117,8 @@ a:hover {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -256,6 +259,7 @@ hr {
 
 button,
 input,
+optgroup,
 select,
 textarea {
   font: inherit; /* 1 */
@@ -418,6 +422,14 @@ textarea {
   font: inherit; /* 2 */
 }
 
+/* If you go back to the web browser, before I refresh, I want you to pay attention 
+   to this tiny white margin you see on the left and right side of the browser. 
+   So if I refresh, you can see it's gone. And you can thank normalize.css for that.
+
+   Normalize is an alternative to CSSResets. 
+   Its adjusts the styles of certain elements, in an effort to make all web browsers render things more consistently. 
+   Normalize is excellent. I recommend using it on all of your projects */
+
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
@@ -480,8 +492,8 @@ img {
   color: #FFF;
   font-size: 1.1rem;
   font-weight: 100;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
-  max-width: 30rem;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);/* Top, Left, z-index (0/-1 - underneath!, Colour & Opacity 10% */
+  max-width: 30rem;/* 480px/16px = 30rem */
   margin-left: auto;
   margin-right: auto;
 }
@@ -489,18 +501,20 @@ img {
 @media (min-width: 530px) {
 
   .large-hero__description {
-    font-size: 1.875rem;
+    font-size: 1.875rem;/* Emulate 30pixels .. 30/16px = 1.875 */
   }
 }
 
 .btn {
   background-color: #2f5572;
   color: #FFF;
-  text-decoration: none;
-  padding: .75rem 1.2rem;
+  text-decoration: none;              /* removes text underline */
+  padding: .75rem 1.2rem;             /* top-bottom, left-right */
   display: inline-block;
 
 }
+
+/* useful when using padding */
 
 .btn--orange {
   background-color: #d59541;
@@ -523,13 +537,108 @@ img {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+
+}
+
+.wrapper--medium {/* narrower column than the default 1200px width column */
+  max-width: 976px;
+}
+
+/* "Note the way that this image is positioned and sized on small screens. The reason
+      the extra spacing exists is because we have a wrapper wrapped inside a wrapper. 
+
+     i.e. We have a div [class=wrapper wrapper--medium] surrounding the image, 
+           and this div is nested within another div [class=wrapper].
+
+     We don't want that nested padding effect to actually take place. 
+      So what we can do is to go into wrapper.css and let's just say 
+        that any wrapper inside another wrapper should no longer have any horizontal padding..." */
+
+.wrapper .wrapper {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .page-section {
-  padding: 4.5rem 0;
+  padding: 1.2rem 0;
+}
+
+/* smaller baseline padding for small screens */
+
+@media (min-width: 800px) {
+
+  .page-section {
+    padding: 4.5rem 0;/* top & bottom padding only */
+  }
 }
 
 .page-section--blue {
   background-color: #2f5572;
   color: #FFF;
 }
+
+.headline {
+  font-size: 1.9rem;                  /* smaller baseline fontsize for small screens */
+  font-weight: 300;
+  color: #2f5572;
+}
+
+@media (min-width: 530px) {
+
+  .headline {
+    font-size: 2.875rem;/* 46/16px = 2.875rem   */
+  }
+}
+
+/*    N.B.  2.875 rem        is rendered as 1.0rem
+            2.875rem         is rendered as 2.875rem           
+
+        i.e. NO SPACES between the quantity and the unit!       */
+
+.headline--centered {
+  text-align: center;
+}
+
+.headline--orange {
+  color: #d59541;
+}
+
+.headline--small {
+  font-size: 1.2rem;
+}
+
+/* smaller baseline fontsize for small screens */
+
+@media (min-width: 530px) {
+
+  .headline--small {
+    font-size: 1.875rem;/* 30/16px = 1.875rem */
+  }
+}
+
+.headline--narrow {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.headline--light {
+  font-weight: 100;
+}
+
+.headline strong {
+  font-weight: 400;
+}
+
+.headline--b-margin-small {
+  margin-bottom: .5em;
+}
+
+.headline--b-margin-large {
+  margin-bottom: 1.6em;
+}
+
+/* Although @import is a native function of CSS 
+   it is better to get postCSS to perform the import instead 
+   in the gulp CSS Workflow pipe (using postcss-import)
+    .. much faster performance of the final webpage */
