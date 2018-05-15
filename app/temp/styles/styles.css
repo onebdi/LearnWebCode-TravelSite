@@ -677,8 +677,16 @@ a {
   margin-right: -65px;
 }
 
+.row--gutters-large{
+  padding-right: 100px;
+}
+
 .row--gutters > div {
   padding-right: 65px;
+}
+
+.row--gutters-large > div {
+  padding-right: 100px;
 }
 
 /* > div  ..  Select all the 'children' that use a tag of div */
@@ -709,6 +717,11 @@ a {
     width: 37%;
   }
 
+  .row__medium-6 {
+    float: left;
+    width: 50%;
+  }
+
   .row__medium-8 {
     float: left;
     width: 66.66%;
@@ -720,8 +733,9 @@ a {
 }
 
 .generic-content-container p {
+  font-weight: 300;
   line-height: 1.65;/* line height does not need any units */
-  margin: 1.8rem 0;/* bump up the vertical margin between paragraphs */
+  margin: 0 0 1.8rem 0;/* bump up the bottom margin between paragraphs */
   font-size: 1.0rem;
 }
 
@@ -736,6 +750,64 @@ a {
 
 .generic-content-container p a {/* descendant selector for hyperlinks in paragraphs */
   font-weight: 700;/* extra bold */
+}
+
+.section-title {
+  font-size: 2.55rem;          /* smaller fontsize for smaller screens */
+  font-weight: 300;
+  text-align: center;
+
+}
+
+@media (min-width: 530px) {
+
+  .section-title {
+    font-size: 3.75rem;/* 60px     60/16 = 3.75rem      */
+  }
+}
+
+.section-title strong {
+  font-weight: 500;/* extra bold for header */
+}
+
+.section-title__icon {
+  display: block;/* make element a block level element which drop the text after it onto a new line */
+  margin-left: auto;/* now its a block level element, make sure that it stays horizontally centered */
+  margin-right: auto;/*   using both margin-left: auto AND margin-right: auto */
+  margin-bottom: 0.6rem;
+}
+
+@media (min-width: 530px) {
+
+  .section-title__icon {
+    margin-right: .5rem;/* more space between icon and the section title */
+    margin-left: 0;/* for better centering */
+    margin-bottom: 0rem;/* undo the above for larger screens */
+    display: inline-block;/* undo the above for larger screens */
+  }
+}
+
+.feature-item {
+  position: relative;
+  padding-left: 94px;
+  padding-bottom: 2.5rem;
+
+}
+
+/* "We want the icon to be positioned in relation to its parent,
+       lets's be sure to give the parent element position relative.  */
+
+.feature-item__icon {
+  position: absolute;
+  left: 0;
+}
+
+/* add vertical space between feature items in the same column */
+
+.feature-item__title {
+  font-size: 1.875rem;/* 30px    30/16 = 1.875rem */
+  font-weight: 300;
+  margin-bottom: .8rem;
 }
 
 /* Although @import is a native function of CSS 

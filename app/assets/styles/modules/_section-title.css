@@ -1,0 +1,28 @@
+.section-title {
+  font-size: 2.55rem;          /* smaller fontsize for smaller screens */
+  font-weight: 300;
+  text-align: center;
+
+  @mixin atSmall {
+    font-size: 3.75rem;        /* 60px     60/16 = 3.75rem      */
+  }
+
+  strong {
+    font-weight: 500;          /* extra bold for header */
+  }
+
+  &__icon {
+    display: block;            /* make element a block level element which drop the text after it onto a new line */
+    margin-left: auto;         /* now its a block level element, make sure that it stays horizontally centered */
+    margin-right: auto;        /*   using both margin-left: auto AND margin-right: auto */
+    margin-bottom: 0.6rem;
+
+    @mixin atSmall {
+      margin-right: .5rem;    /* more space between icon and the section title */
+      margin-left: 0;         /* for better centering */
+      margin-bottom: 0rem;    /* undo the above for larger screens */
+      display: inline-block;  /* undo the above for larger screens */
+    }
+  }
+
+}

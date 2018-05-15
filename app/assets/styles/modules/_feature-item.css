@@ -1,0 +1,20 @@
+.feature-item {
+  position: relative;
+  padding-left: 94px;
+  padding-bottom: 2.5rem;            /* add vertical space between feature items in the same column */
+
+  /* "We want the icon to be positioned in relation to its parent,
+       lets's be sure to give the parent element position relative.  */
+
+  &__icon {
+    position: absolute;
+    left: 0;
+  }
+
+  &__title {
+     font-size: 1.875rem;             /* 30px    30/16 = 1.875rem */
+     font-weight: 300;
+     margin-bottom: .8rem;
+  }
+
+}
