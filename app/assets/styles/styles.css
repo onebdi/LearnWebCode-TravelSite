@@ -8,15 +8,16 @@
    Its adjusts the styles of certain elements, in an effort to make all web browsers render things more consistently. 
    Normalize is excellent. I recommend using it on all of your projects */
 
-@import "base/_global";
 @import "base/_variables";
 @import "base/_mixins";
+@import "base/_global";
 @import "modules/_large-hero";
 @import "modules/_btn";
 @import "modules/_wrapper";
 @import "modules/_page-section";
 @import "modules/_headline";
 @import "modules/_row";
+@import "modules/_generic-content-container";
 
 /* Although @import is a native function of CSS 
    it is better to get postCSS to perform the import instead 
