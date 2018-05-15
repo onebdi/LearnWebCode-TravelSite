@@ -1,20 +1,37 @@
 .feature-item {
   position: relative;
-  padding-left: 94px;
-  padding-bottom: 2.5rem;            /* add vertical space between feature items in the same column */
+  padding-bottom: 2.5rem;          /* add vertical space between feature items in the same column */
 
   /* "We want the icon to be positioned in relation to its parent,
        lets's be sure to give the parent element position relative.  */
 
+  &mixin atSmall {
+    padding-left: 94px;
+  } 
+
+
   &__icon {
-    position: absolute;
-    left: 0;
+    display: block;         /* make element a block level element which drop the text after it onto a new line */
+    margin: 0 auto;
+
+    @mixin atSmall {
+      position: absolute;
+      left: 0;
+    }
   }
 
   &__title {
-     font-size: 1.875rem;             /* 30px    30/16 = 1.875rem */
-     font-weight: 300;
-     margin-bottom: .8rem;
+    font-size: 1.6rem;             /* smaller fontsize for smaller screens */
+    font-weight: 300;
+    margin-top: .7em;              /* reduce margin between icon & title on smaller screens */
+    margin-bottom: .8rem;
+    text-align: center;
+
+    @mixin atSmall {
+      text-align: left;            /* undo the above for larger screens */
+      margin-top: 1em;             /* undo the above for larger screens */
+      font-size: 1.875rem;         /* 30px    30/16 = 1.875rem */
+    }
   }
 
 }

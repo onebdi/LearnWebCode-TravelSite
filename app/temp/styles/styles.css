@@ -777,19 +777,20 @@ a {
   margin-bottom: 0.6rem;
 }
 
+/* reduce margin between icon & title on smaller screens */
+
 @media (min-width: 530px) {
 
   .section-title__icon {
     margin-right: .5rem;/* more space between icon and the section title */
     margin-left: 0;/* for better centering */
-    margin-bottom: 0rem;/* undo the above for larger screens */
+    margin-bottom: 0;/* undo the above for larger screens */
     display: inline-block;/* undo the above for larger screens */
   }
 }
 
 .feature-item {
   position: relative;
-  padding-left: 94px;
   padding-bottom: 2.5rem;
 
 }
@@ -797,17 +798,40 @@ a {
 /* "We want the icon to be positioned in relation to its parent,
        lets's be sure to give the parent element position relative.  */
 
-.feature-item__icon {
-  position: absolute;
-  left: 0;
+.feature-itemmixin atSmall {
+  padding-left: 94px;
 }
 
 /* add vertical space between feature items in the same column */
 
+.feature-item__icon {
+  display: block;/* make element a block level element which drop the text after it onto a new line */
+  margin: 0 auto;
+}
+
+@media (min-width: 530px) {
+
+  .feature-item__icon {
+    position: absolute;
+    left: 0;
+  }
+}
+
 .feature-item__title {
-  font-size: 1.875rem;/* 30px    30/16 = 1.875rem */
+  font-size: 1.6rem;/* smaller fontsize for smaller screens */
   font-weight: 300;
+  margin-top: .7em;/* reduce margin between icon & title on smaller screens */
   margin-bottom: .8rem;
+  text-align: center;
+}
+
+@media (min-width: 530px) {
+
+  .feature-item__title {
+    text-align: left;/* undo the above for larger screens */
+    margin-top: 1em;/* undo the above for larger screens */
+    font-size: 1.875rem;/* 30px    30/16 = 1.875rem */
+  }
 }
 
 /* Although @import is a native function of CSS 
