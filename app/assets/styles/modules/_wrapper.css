@@ -2,7 +2,7 @@
   overflow: hidden;            /* NICE! */ 
   padding-left: 18px;
   padding-right: 18px;
-  max-width: 1236px;          /* when we used box-sizing: border-box; the max-width actually dropped by 36px to 1164px */
+  max-width: 1236px;           /* when we used box-sizing: border-box; the max-width actually dropped by 36px to 1164px */
   margin-left: auto;
   margin-right: auto;
 
@@ -29,7 +29,7 @@
     margin-bottom: 1rem;
 
     @mixin atSmall {
-      margin-bottom: 3.875rem;
+      margin-bottom: 3.875rem;        /* 62/16px = 3.875rem,   62 pixels is measured from the design doc */
     }
   }
 

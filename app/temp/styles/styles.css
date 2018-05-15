@@ -2,13 +2,15 @@
 
 /**
  * 1. Change the default font family in all browsers (opinionated).
- * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in IE and iOS.
  */
 
 html {
   font-family: sans-serif; /* 1 */
-  -ms-text-size-adjust: 100%; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
 }
 
 /**
@@ -115,7 +117,8 @@ a:hover {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -256,6 +259,7 @@ hr {
 
 button,
 input,
+optgroup,
 select,
 textarea {
   font: inherit; /* 1 */
@@ -418,6 +422,17 @@ textarea {
   font: inherit; /* 2 */
 }
 
+/* If you go back to the web browser, before I refresh, I want you to pay attention 
+   to this tiny white margin you see on the left and right side of the browser. 
+   So if I refresh, you can see it's gone. And you can thank normalize.css for that.
+
+   Normalize is an alternative to CSSResets. 
+   Its adjusts the styles of certain elements, in an effort to make all web browsers render things more consistently. 
+   Normalize is excellent. I recommend using it on all of your projects */
+
+/* bit of empty fake space ADDED AFTER the div with the class "row"       by css-nested  
+    clear floats for a bit of extra added browser support */
+
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
@@ -443,7 +458,7 @@ a {
 }
 
 .large-hero__image {
-  display: block;
+  display: block;/* block: rectangle  VS  inline: line of text w/ space above & below for top hats & tails */
 }
 
 .large-hero__text-content {
@@ -488,8 +503,8 @@ a {
   color: #FFF;
   font-size: 1.1rem;
   font-weight: 100;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
-  max-width: 30rem;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);/* Top, Left, z-index (0/-1 - underneath!, Colour & Opacity 10% */
+  max-width: 30rem;/* 480px/16px = 30rem */
   margin-left: auto;
   margin-right: auto;
 }
@@ -497,18 +512,20 @@ a {
 @media (min-width: 530px) {
 
   .large-hero__description {
-    font-size: 1.875rem;
+    font-size: 1.875rem;/* Emulate 30pixels .. 30/16px = 1.875 */
   }
 }
 
 .btn {
   background-color: #2f5572;
   color: #FFF;
-  text-decoration: none;
-  padding: .75rem 1.2rem;
+  text-decoration: none;              /* removes text underline */
+  padding: .75rem 1.2rem;             /* top-bottom, left-right */
   display: inline-block;
 
 }
+
+/* useful when using padding */
 
 .btn--orange {
   background-color: #d59541;
@@ -518,6 +535,8 @@ a {
   padding: 1.1rem 1.9rem;
 }
 
+/* no font-size def'd - same as 1.0rem */
+
 @media (min-width: 530px) {
 
   .btn--large {
@@ -526,18 +545,28 @@ a {
 }
 
 .wrapper {
-  overflow: hidden;
+  overflow: hidden;            /* NICE! */ 
   padding-left: 18px;
   padding-right: 18px;
-  max-width: 1236px;
+  max-width: 1236px;           /* when we used box-sizing: border-box; the max-width actually dropped by 36px to 1164px */
   margin-left: auto;
   margin-right: auto;
 
 }
 
-.wrapper--medium {
+.wrapper--medium {/* narrower column than the default 1200px width column */
   max-width: 976px;
 }
+
+/* "Note the way that this image is positioned and sized on small screens. The reason
+      the extra spacing exists is because we have a wrapper wrapped inside a wrapper. 
+
+     i.e. We have a div [class=wrapper wrapper--medium] surrounding the image, 
+           and this div is nested within another div [class=wrapper].
+
+     We don't want that nested padding effect to actually take place. 
+      So what we can do is to go into wrapper.css and let's just say 
+        that any wrapper inside another wrapper should no longer have any horizontal padding..." */
 
 .wrapper .wrapper {
   padding-left: 0;
@@ -551,7 +580,7 @@ a {
 @media (min-width: 530px) {
 
   .wrapper--b-margin {
-    margin-bottom: 3.875rem;
+    margin-bottom: 3.875rem;/* 62/16px = 3.875rem,   62 pixels is measured from the design doc */
   }
 }
 
@@ -559,10 +588,12 @@ a {
   padding: 1.2rem 0;
 }
 
+/* smaller baseline padding for small screens */
+
 @media (min-width: 800px) {
 
   .page-section {
-    padding: 4.5rem 0;
+    padding: 4.5rem 0;/* top & bottom padding only */
   }
 }
 
@@ -572,7 +603,7 @@ a {
 }
 
 .headline {
-  font-size: 1.9rem;
+  font-size: 1.9rem;                  /* smaller baseline fontsize for small screens */
   font-weight: 300;
   color: #2f5572;
 }
@@ -580,9 +611,14 @@ a {
 @media (min-width: 530px) {
 
   .headline {
-    font-size: 2.875rem;
+    font-size: 2.875rem;/* 46/16px = 2.875rem   */
   }
 }
+
+/*    N.B.  2.875 rem        is rendered as 1.0rem
+            2.875rem         is rendered as 2.875rem           
+
+        i.e. NO SPACES between the quantity and the unit!       */
 
 .headline--centered {
   text-align: center;
@@ -596,10 +632,12 @@ a {
   font-size: 1.2rem;
 }
 
+/* smaller baseline fontsize for small screens */
+
 @media (min-width: 530px) {
 
   .headline--small {
-    font-size: 1.875rem;
+    font-size: 1.875rem;/* 30/16px = 1.875rem */
   }
 }
 
@@ -643,11 +681,20 @@ a {
   padding-right: 65px;
 }
 
+/* > div  ..  Select all the 'children' that use a tag of div */
+
 .row__b-margin-until-medium {
   margin-bottom: 1rem;
 }
 
 @media (min-width: 800px) {
+
+  .row {/* If the rows available width as 100%, then divide it up among our 12 column grid 
+        then 100/12, 8.333, that each each column grid is 8.33% wide
+
+       Cannot let the combined width of the columns & padding be more than 100%, otherwise it will break onto two lines 
+        unless you use    box-sizing: border-box;  (see _global.css) */
+  }
 
   .row__b-margin-until-medium {
     margin-bottom: 0;
@@ -673,17 +720,25 @@ a {
 }
 
 .generic-content-container p {
-  line-height: 1.65;
-  margin: 1.8rem 0;
+  line-height: 1.65;/* line height does not need any units */
+  margin: 1.8rem 0;/* bump up the vertical margin between paragraphs */
+  font-size: 1.0rem;
 }
+
+/* smaller baseline fontsize for smaller screens */
 
 @media (min-width: 530px) {
 
   .generic-content-container p {
-    font-size: 1.125rem;
+    font-size: 1.125rem;/* norm: 16px    want: 18px    18/16px = 1.125rem */
   }
 }
 
-.generic-content-container p a {
-  font-weight: 700;
+.generic-content-container p a {/* descendant selector for hyperlinks in paragraphs */
+  font-weight: 700;/* extra bold */
 }
+
+/* Although @import is a native function of CSS 
+   it is better to get postCSS to perform the import instead 
+   in the gulp CSS Workflow pipe (using postcss-import)
+    .. much faster performance of the final webpage */

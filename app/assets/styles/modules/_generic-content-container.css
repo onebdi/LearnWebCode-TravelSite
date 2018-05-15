@@ -1,16 +1,16 @@
 .generic-content-container {
   
   p {
-    line-height: 1.65;
-    margin: 1.8rem 0;
-
+    line-height: 1.65;             /* line height does not need any units */
+    margin: 1.8rem 0;              /* bump up the vertical margin between paragraphs */
+    font-size: 1.0rem;             /* smaller baseline fontsize for smaller screens */
     @mixin atSmall {
-      font-size: 1.125rem;
+      font-size: 1.125rem;         /* norm: 16px    want: 18px    18/16px = 1.125rem */
     }
   }
 
-  p a {
-    font-weight: 700;
+  p a {                            /* descendant selector for hyperlinks in paragraphs */
+    font-weight: 700;              /* extra bold */
   }
 
 }

@@ -13,10 +13,12 @@ gulp.task('watch', function() {
   });
 
   watch('./app/index.html', function() {
+    /* previously:  gulp.start('html'); */
     browserSync.reload();
   });
 
   watch('./app/assets/styles/**/*.css', function() {
+    /* previously:  gulp.start('styles'); */
     gulp.start('cssInject');
   });
 
