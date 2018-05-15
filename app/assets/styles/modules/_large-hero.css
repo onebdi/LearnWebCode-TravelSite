@@ -3,7 +3,7 @@
   position: relative;
 
   &__image {
-    display: block;
+    display: block;       /* block: rectangle  VS  inline: line of text w/ space above & below for top hats & tails */
   }
 
   &__text-content {

@@ -16,6 +16,7 @@
 @import "modules/_wrapper";
 @import "modules/_page-section";
 @import "modules/_headline";
+@import "modules/_row";
 
 /* Although @import is a native function of CSS 
    it is better to get postCSS to perform the import instead 

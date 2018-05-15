@@ -15,3 +15,14 @@
     @mixin-content;
   }
 }
+
+@define-mixin clearfix {
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+ /* bit of empty fake space ADDED AFTER the div with the class "row"       by css-nested  
+    clear floats for a bit of extra added browser support */
