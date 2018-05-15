@@ -1,8 +1,9 @@
 .generic-content-container {
   
   p {
+    font-weight: 300;
     line-height: 1.65;             /* line height does not need any units */
-    margin: 1.8rem 0;              /* bump up the vertical margin between paragraphs */
+    margin: 0 0 1.8rem 0;          /* bump up the bottom margin between paragraphs */
     font-size: 1.0rem;             /* smaller baseline fontsize for smaller screens */
     @mixin atSmall {
       font-size: 1.125rem;         /* norm: 16px    want: 18px    18/16px = 1.125rem */
