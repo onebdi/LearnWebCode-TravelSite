@@ -20,6 +20,7 @@
 @import "modules/_generic-content-container";
 @import "modules/_section-title";
 @import "modules/_feature-item";
+@import "modules/_testimonial";
 
 /* Although @import is a native function of CSS 
    it is better to get postCSS to perform the import instead 

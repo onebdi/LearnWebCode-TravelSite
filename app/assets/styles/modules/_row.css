@@ -2,8 +2,16 @@
 
   @mixin clearfix;
 
+  &--t-padding {
+    padding-top: 80px;
+  }
+
   &--gutters {
     margin-right: -65px;
+  }
+
+  &--gutters-small{
+    margin-right: -45px;
   }
 
   &--gutters-large{
@@ -12,6 +20,10 @@
 
   &--gutters > div {
     padding-right: 65px;
+  }
+
+  &--gutters-small > div {
+    padding-right: 45px;
   }
 
   &--gutters-large > div {
@@ -56,6 +68,66 @@
 
        Cannot let the combined width of the columns & padding be more than 100%, otherwise it will break onto two lines 
         unless you use    box-sizing: border-box;  (see _global.css) */        
+  }
+
+  @mixin atLarge {
+
+    &__b-margin-until-large {
+      margin-bottom: 0;
+    }
+
+    &__large-4 {
+      float: left;
+      width: 33.33%;
+    }
+
+    &__large-4--larger {
+      width: 37%;
+    }
+
+    &__large-6 {
+      float: left;
+      width: 50%;
+    }
+
+    &__large-8 {
+      float: left;
+      width: 66.66%;
+    }
+
+    &__large-8--smaller {
+      width: 63%;
+    }
+    /* If the rows available width as 100%, then divide it up among our 12 column grid 
+        then 100/12, 8.333, that each each column grid is 8.33% wide
+
+       Cannot let the combined width of the columns & padding be more than 100%, otherwise it will break onto two lines 
+        unless you use    box-sizing: border-box;  (see _global.css) */        
+  }
+
+  /* Begin Equal Height Rules */
+  &--equal-height-at-medium {
+    @mixin atMedium {
+      display: flex;
+    }
+
+    & > div {
+      float: none;           /* stop using float and start using flexbox instead */
+      display: flex;
+    }
+
+  }
+
+  &--equal-height-at-large {
+    @mixin atLarge {
+      display: flex;
+    }
+
+    & > div {
+      float: none;           /* stop using float and start using flexbox instead */
+      display: flex;
+    }
+
   }
 
 }

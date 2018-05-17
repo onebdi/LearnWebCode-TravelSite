@@ -11,6 +11,10 @@
     font-weight: 500;          /* extra bold for header */
   }
 
+  &--blue {
+    color: $mainBlue;
+  }
+
   &__icon {
     display: block;            /* make element a block level element which drop the text after it onto a new line */
     margin-left: auto;         /* now its a block level element, make sure that it stays horizontally centered */
@@ -18,6 +22,9 @@
     margin-bottom: 0.6rem;     /* reduce margin between icon & title on smaller screens */
 
     @mixin atSmall {
+      position: relative;     /* adjust the top margin .. lower the icon vertically a bit*/
+      top: 8px;
+
       margin-right: .5rem;    /* more space between icon and the section title */
       margin-left: 0;         /* for better centering */
       margin-bottom: 0;       /* undo the above for larger screens */

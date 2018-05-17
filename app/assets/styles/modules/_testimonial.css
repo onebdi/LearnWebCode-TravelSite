@@ -1,0 +1,55 @@
+.testimonial {
+
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0 18px 1px 18px;
+  margin-bottom: 98px;             /* prevent overlapping images stacking on small screens */
+
+  @mixin atLarge {
+    margin-bottom: 0;                           /* undo setting on larger screens */
+    padding: 0 1.8125rem 1px 1.8125rem;         /* 29px /16 = 1.8125rem */
+  }
+
+        /* by giving the 'container' just even one single pixel of bottom padding
+            it gives the bottom margin of this 'content' something to push up against
+              (combined margin/padding is 8px instead of 0px)                              */
+
+        /* Content > Padding > Border > Margin > container > Padding > Border > Margin     */
+
+        /* Content - The content of the box, where text and images appear
+           Padding - Clears an area around the content. The padding is transparent
+           Border - A border that goes around the padding and content
+           Margin - Clears an area outside the border. The margin is transparent            */
+
+  &--last {
+    margin-bottom: 0px;
+
+  }
+
+  &__photo {
+    border-radius: 80px;           /* half the width - allusion of being a circle! */ 
+    overflow: hidden;
+    width: 160px;                  /* same width as the image */
+    height: 160px;                 /* same height as the image */
+    margin: 0 auto -80px auto;     /* horizontally centered... */
+    position: relative;            /* needed to place image outside of container w/ top -80px */
+    top: -80px;                    /* PULL image up 80 pixels. -ve bottom margin will pull up the content below! */
+    border: 6px solid rgba(255, 255, 255, 0.8);        /* circular border */
+  }
+
+  &__title {
+    color: $mainBlue;
+    text-align: center;
+    font-size: 1.5rem;             /* 24px /16 = 1.5rem */
+    font-weight: 500;
+    margin: 0;
+  }
+
+  &__subtitle {
+    color: $mainOrange;
+    text-align: center;
+    font-size: 0.9375rem;          /* 15px /16 = 0.9375rem */
+    font-weight: 400;
+    margin: 0.25rem 0 1rem 0;      /* closer the title, space below */
+  }
+
+}

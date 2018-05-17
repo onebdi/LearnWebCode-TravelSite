@@ -568,6 +568,32 @@ a {
       So what we can do is to go into wrapper.css and let's just say 
         that any wrapper inside another wrapper should no longer have any horizontal padding..." */
 
+.wrapper--no-padding-until-medium {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width: 800px) {
+
+  .wrapper--no-padding-until-medium {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+.wrapper--no-padding-until-large {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width: 1010px) {
+
+  .wrapper--no-padding-until-large {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
 .wrapper .wrapper {
   padding-left: 0;
   padding-right: 0;
@@ -586,6 +612,7 @@ a {
 
 .page-section {
   padding: 1.2rem 0;
+
 }
 
 /* smaller baseline padding for small screens */
@@ -597,9 +624,43 @@ a {
   }
 }
 
+.page-section--no-b-padding-until-medium {
+  padding-bottom: 0;
+}
+
+@media (min-width: 800px) {
+
+  .page-section--no-b-padding-until-medium {
+    padding-bottom: 4.5rem;
+  }
+}
+
+.page-section--no-b-padding-until-large {
+  padding-bottom: 0;
+}
+
+@media (min-width: 1010px) {
+
+  .page-section--no-b-padding-until-large {
+    padding-bottom: 4.5rem;
+  }
+}
+
 .page-section--blue {
   background-color: #2f5572;
   color: #FFF;
+}
+
+.page-section--testimonials {
+  background-color: #e0e6ef;
+}
+
+@media (min-width: 1010px) {
+
+  .page-section--testimonials {
+    background: url('/assets/images/testimonials-bg.jpg') top center no-repeat;
+    background-size: cover;/* shrink/stretch to be large enough to perfectly cover the containing div */
+  }
 }
 
 .headline {
@@ -673,8 +734,16 @@ a {
   display: table;
 }
 
+.row--t-padding {
+  padding-top: 80px;
+}
+
 .row--gutters {
   margin-right: -65px;
+}
+
+.row--gutters-small{
+  margin-right: -45px;
 }
 
 .row--gutters-large{
@@ -683,6 +752,10 @@ a {
 
 .row--gutters > div {
   padding-right: 65px;
+}
+
+.row--gutters-small > div {
+  padding-right: 45px;
 }
 
 .row--gutters-large > div {
@@ -732,6 +805,69 @@ a {
   }
 }
 
+@media (min-width: 1010px) {
+
+  .row {/* If the rows available width as 100%, then divide it up among our 12 column grid 
+        then 100/12, 8.333, that each each column grid is 8.33% wide
+
+       Cannot let the combined width of the columns & padding be more than 100%, otherwise it will break onto two lines 
+        unless you use    box-sizing: border-box;  (see _global.css) */
+  }
+
+  .row__b-margin-until-large {
+    margin-bottom: 0;
+  }
+
+  .row__large-4 {
+    float: left;
+    width: 33.33%;
+  }
+
+  .row__large-4--larger {
+    width: 37%;
+  }
+
+  .row__large-6 {
+    float: left;
+    width: 50%;
+  }
+
+  .row__large-8 {
+    float: left;
+    width: 66.66%;
+  }
+
+  .row__large-8--smaller {
+    width: 63%;
+  }
+}
+
+/* Begin Equal Height Rules */
+
+@media (min-width: 800px) {
+
+  .row--equal-height-at-medium {
+    display: flex;
+  }
+}
+
+.row--equal-height-at-medium > div {
+  float: none;/* stop using float and start using flexbox instead */
+  display: flex;
+}
+
+@media (min-width: 1010px) {
+
+  .row--equal-height-at-large {
+    display: flex;
+  }
+}
+
+.row--equal-height-at-large > div {
+  float: none;/* stop using float and start using flexbox instead */
+  display: flex;
+}
+
 .generic-content-container p {
   font-weight: 300;
   line-height: 1.65;/* line height does not need any units */
@@ -770,6 +906,10 @@ a {
   font-weight: 500;/* extra bold for header */
 }
 
+.section-title--blue {
+  color: #2f5572;
+}
+
 .section-title__icon {
   display: block;/* make element a block level element which drop the text after it onto a new line */
   margin-left: auto;/* now its a block level element, make sure that it stays horizontally centered */
@@ -782,6 +922,8 @@ a {
 @media (min-width: 530px) {
 
   .section-title__icon {
+    position: relative;/* adjust the top margin .. lower the icon vertically a bit*/
+    top: 8px;
     margin-right: .5rem;/* more space between icon and the section title */
     margin-left: 0;/* for better centering */
     margin-bottom: 0;/* undo the above for larger screens */
@@ -835,6 +977,66 @@ a {
     margin-top: 1em;/* undo the above for larger screens */
     font-size: 1.875rem;/* 30px    30/16 = 1.875rem */
   }
+}
+
+.testimonial {
+
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0 18px 1px 18px;
+  margin-bottom: 98px;
+
+}
+
+/* prevent overlapping images stacking on small screens */
+
+@media (min-width: 1010px) {
+
+  .testimonial {
+    margin-bottom: 0;/* undo setting on larger screens */
+    padding: 0 1.8125rem 1px 1.8125rem;/* 29px /16 = 1.8125rem */
+  }
+}
+
+/* Content - The content of the box, where text and images appear
+           Padding - Clears an area around the content. The padding is transparent
+           Border - A border that goes around the padding and content
+           Margin - Clears an area outside the border. The margin is transparent            */
+
+.testimonial--last {
+  margin-bottom: 0px;
+}
+
+/* Content > Padding > Border > Margin > container > Padding > Border > Margin     */
+
+.testimonial__photo {
+  border-radius: 80px;/* half the width - allusion of being a circle! */
+  overflow: hidden;
+  width: 160px;/* same width as the image */
+  height: 160px;/* same height as the image */
+  margin: 0 auto -80px auto;/* horizontally centered... */
+  position: relative;/* needed to place image outside of container w/ top -80px */
+  top: -80px;/* PULL image up 80 pixels. -ve bottom margin will pull up the content below! */
+  border: 6px solid rgba(255, 255, 255, 0.8);/* circular border */
+}
+
+/* by giving the 'container' just even one single pixel of bottom padding
+            it gives the bottom margin of this 'content' something to push up against
+              (combined margin/padding is 8px instead of 0px)                              */
+
+.testimonial__title {
+  color: #2f5572;
+  text-align: center;
+  font-size: 1.5rem;/* 24px /16 = 1.5rem */
+  font-weight: 500;
+  margin: 0;
+}
+
+.testimonial__subtitle {
+  color: #d59541;
+  text-align: center;
+  font-size: 0.9375rem;/* 15px /16 = 0.9375rem */
+  font-weight: 400;
+  margin: 0.25rem 0 1rem 0;/* closer the title, space below */
 }
 
 /* Although @import is a native function of CSS 
