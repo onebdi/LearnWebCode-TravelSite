@@ -22,6 +22,7 @@
 @import "modules/_feature-item";
 @import "modules/_testimonial";
 @import "modules/_sprite";
+@import "modules/_site-footer";
 
 /* Although @import is a native function of CSS 
    it is better to get postCSS to perform the import instead 

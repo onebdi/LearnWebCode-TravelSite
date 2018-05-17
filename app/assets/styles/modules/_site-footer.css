@@ -1,0 +1,19 @@
+.site-footer {
+  background-color: $mainBlue;
+  color: #FFF;
+  padding: .5rem;
+  text-align: center;
+
+  &__text {
+     display: block;           /* force new line after the text */
+     margin-bottom: 1rem;
+     font-weight: 200;
+
+     @mixin atMedium {
+       display: inline;        /* Undo the above block on larger screens .. */
+       margin-bottom: 0;       /* Undo the above block on larger screens .. */
+       margin-right: 1.4rem;   /* increase gap between text and button   */
+     }
+  }
+
+}
