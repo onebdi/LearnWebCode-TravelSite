@@ -11,7 +11,12 @@
   }
 
   @mixin atMedium {
+    position: fixed;                        /* STICKS MENU TO THE TOP OF THE VIEWPORT for larger screens */
     background-color: rgba($mainBlue,.3);   /* rgba is overloaded by hexrgba to allow hex color variables */
+
+    &--dark {
+      background-color: rgba(23, 51, 72, .85);
+    }
   }
 
   &__btn-container {
@@ -21,18 +26,23 @@
   }
 
   &__logo {
-    position: absolute;        /* the logo floats over the edge of the site header! */
+    position: absolute;                      /* the logo floats over the edge of the site header! */
     top: 0;
     background-color: $mainBlue;
     padding: 25px 36px;
-    left: 50%;                     /* move the logo (specifically, it's left edge) to the center of the screen */
-    transform: translateX(-50%) scale(0.8);   /* move the logo to the left by half of it's own width */
-                                              /* scale the logo N.B. the centerpoint is the origin of the transform */
-    transform-origin: 50px 0px;               /*  .. move the origin of the transform */
+    left: 50%;                               /* move the logo (specifically, it's left edge) to the center of the screen */
+    transform: translateX(-50%) scale(0.8);  /* THEN move the logo to the left by half of it's own width */
+                                             /* scale the logo N.B. the centerpoint is the origin of the transform */
+    transition: transform .3s ease-out;                                         
+    transform-origin: 50px 0px;              /*  .. move the origin of the transform */
 
     @mixin atMedium {
-      left: auto;                  /* undo the centering on larger screens */
-      transform: translateX(0) scale(1.0);    /* undo the centering on larger screens */
+      left: auto;                            /* undo the centering on larger screens */
+      transform: translateX(0) scale(1.0);   /* undo the centering on larger screens */
+
+      .site-header--dark & {                 /* selector will target the logo only when the dark header is being used */
+        transform: scale(0.57);
+      } 
     }
   }
 

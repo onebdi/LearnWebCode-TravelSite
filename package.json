@@ -4,6 +4,7 @@
   "dependencies": {
     "babel-loader": "^7.1.4",
     "jquery": "^2.2.4",
+    "jquery-smooth-scroll": "^2.2.0",
     "normalize.css": "^4.1.1",
     "npm": "^6.1.0",
     "waypoints": "^4.0.1",
