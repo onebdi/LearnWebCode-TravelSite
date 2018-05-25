@@ -5,6 +5,8 @@
     "babel-loader": "^7.1.4",
     "jquery": "^2.2.4",
     "normalize.css": "^4.1.1",
+    "npm": "^6.1.0",
+    "waypoints": "^4.0.1",
     "webpack": "^3.8.1"
   },
   "devDependencies": {

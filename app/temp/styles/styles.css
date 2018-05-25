@@ -1375,6 +1375,17 @@ a {
   }
 }
 
+.reveal-item {
+  opacity: 0;
+  transition: all 1.5s ease-out;
+  transform: scale(1.15);
+}
+
+.reveal-item--is-visible {
+  opacity: 1;/* show */
+  transform: scale(1);/* undo style/scale for hidden */
+}
+
 /* Although @import is a native function of CSS 
    it is better to get postCSS to perform the import instead 
    in the gulp CSS Workflow pipe (using postcss-import)
