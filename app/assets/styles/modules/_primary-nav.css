@@ -1,0 +1,53 @@
+.primary-nav {
+
+  padding-top: 10px;
+  @mixin atMedium {
+    padding-top: 0;         /* undo setting above for medium+ screens */
+  }
+
+  &--pull-right {
+    @mixin atMedium {
+      float: right;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    @mixin clearfix;    /* because I floated them I want the parent element, the unordered list, to use our clearfix */
+  }
+
+  li {
+    list-style: none;       /* i.e. no bullets */
+    display: inline-block;  /* this will allow them to be horizontally centered for smaller screens */
+    padding-right: 7px;     /* smaller gap between list items */
+    @mixin atMedium {
+      padding-right: 20px;  /* gap between list items */
+      float: left;          /* list to be floated to the left so that they will all sit on one line */
+      display: block;       /* undo setting above for medium+ screens */
+    }
+  }
+
+  li:last-child {
+    padding-right: 0;       /*  centered text [on small screens] does not need far-right padding  */
+    @mixin atMedium {
+      padding-right: 20px;
+    }
+  }
+
+  a {
+    color: #FFF;        /* N.B. 'li' color doesn't work, we need to specifically target the 'a' hyperlink(s)! */
+    font-weight: 300;
+    text-decoration: none;
+    display: block;
+    padding: 5px 8px;        /* just enough padding to 'center' the text vertically */
+    font-size: .8rem;
+    background-color: rgba($mainBlue, .5);
+
+    @mixin atMedium {
+      padding: 12px 0;        /* just enough padding to 'center' the text vertically */
+      font-size: 1rem;
+      background-color: transparent;
+    }
+  }
+}

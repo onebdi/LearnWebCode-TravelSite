@@ -7,12 +7,17 @@
   }
 
   &__text-content {
+    padding-top: 88px;           /* separation from the header and logo (centered on small screen) */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     left: 0;
     width: 100%;
     text-align: center;
+
+    @mixin atMedium {
+      padding-top: 60px;        /* separation from the header and logo*/
+    };
   }
 
   &__title {

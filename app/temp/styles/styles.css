@@ -117,8 +117,7 @@ a:hover {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -462,13 +461,20 @@ a {
 }
 
 .large-hero__text-content {
+  padding-top: 88px;/* separation from the header and logo (centered on small screen) */
   position: absolute;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   left: 0;
   width: 100%;
   text-align: center;
+}
+
+@media (min-width: 800px) {
+
+  .large-hero__text-content {
+    padding-top: 60px;/* separation from the header and logo*/
+  }
 }
 
 .large-hero__title {
@@ -847,24 +853,28 @@ a {
 @media (min-width: 800px) {
 
   .row--equal-height-at-medium {
+    display: -ms-flexbox;
     display: flex;
   }
 }
 
 .row--equal-height-at-medium > div {
   float: none;/* stop using float and start using flexbox instead */
+  display: -ms-flexbox;
   display: flex;
 }
 
 @media (min-width: 1010px) {
 
   .row--equal-height-at-large {
+    display: -ms-flexbox;
     display: flex;
   }
 }
 
 .row--equal-height-at-large > div {
   float: none;/* stop using float and start using flexbox instead */
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -1140,6 +1150,228 @@ a {
     display: inline;/* Undo the above block on larger screens .. */
     margin-bottom: 0;/* Undo the above block on larger screens .. */
     margin-right: 1.4rem;/* increase gap between text and button   */
+  }
+}
+
+.site-header {
+  padding: 10px 0;                  /* space above and below the button container */
+  position: absolute;               /* when an element is positioned absolutely by default it will try to shrink wrap 
+                                       and only use as much soace as it needs to fit its content */
+  width: 100%;                      /* we can adjust this in our CSS to telling this element to have a width of 100% */
+  z-index: 2;                       /* in-front of the large-hero section */
+  transition: background-color .3s ease-out;
+}
+
+/* WHEN we apply background color, transition slowly .. */
+
+.site-header--is-expanded {
+  background-color: rgba(47,85,114,.55);
+}
+
+@media (min-width: 800px) {
+
+  .site-header {
+    background-color: rgba(47,85,114,.3);/* rgba is overloaded by hexrgba to allow hex color variables */
+  }
+}
+
+@media (min-width: 800px) {
+
+  .site-header__btn-container {
+    float: right;
+  }
+}
+
+.site-header__logo {
+  position: absolute;/* the logo floats over the edge of the site header! */
+  top: 0;
+  background-color: #2f5572;
+  padding: 25px 36px;
+  left: 50%;/* move the logo (specifically, it's left edge) to the center of the screen */
+  transform: translateX(-50%) scale(0.8);/* move the logo to the left by half of it's own width *//* scale the logo N.B. the centerpoint is the origin of the transform */
+  transform-origin: 50px 0px;
+}
+
+/*  .. move the origin of the transform */
+
+@media (min-width: 800px) {
+
+  .site-header__logo {
+    left: auto;/* undo the centering on larger screens */
+    transform: translateX(0) scale(1.0);/* undo the centering on larger screens */
+  }
+}
+
+.site-header__logo__graphic {
+  text-indent: -9999px;/* text no longer rendered on the 'page', per se */
+}
+
+.site-header__menu-icon {
+  width: 20px;
+  height: 19px;/* reduced by 1px to make 3 small lines the space correctly *//* background-color: #FFF; */
+  position: absolute;
+  z-index: 10;/* Once the menu-content is visible (z-index 1) it's overlapping the icon. Increase z-index! */
+  top: 10px;
+  right: 10px;
+}
+
+/*   pseudo selectors - removes the need to specify __top and __bottom in index.html !
+                             will only display if     content: ""                            */
+
+.site-header__menu-icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  transform-origin: 0 0;/* default: 50% 50%               left: 0  top: 0-top  */
+  transition: transform .3s ease-out;
+}
+
+.site-header__menu-icon__middle {
+  position: absolute;
+  top: 8px;
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  transform-origin: 0 50%;/* shrink from right to left      left: 0  top: 50%-middle */
+  transition: all .3s ease-out;
+}
+
+.site-header__menu-icon::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  transform-origin: 0 100%;/* default: 50% 50%               left: 0  top: 100%-bottom   */
+  transition: transform .3s ease-out;
+}
+
+@media (min-width: 800px) {
+
+  .site-header__menu-icon {
+    display: none;
+  }
+}
+
+.site-header__menu-icon--close-x::before {
+  transform: rotate(45deg) scaleX(1.25);/* ScaleX - lengthen bar by 25% */
+}
+
+.site-header__menu-icon--close-x .site-header__menu-icon__middle {
+  opacity: 0;
+  transform: ScaleX(0);/* ScaleX - reduce bar length to nothing */
+}
+
+.site-header__menu-icon--close-x::after {
+  transform: rotate(-45deg) scaleX(1.25) translateY(1px);/* ScaleX - lengthen bar by 25% */
+}
+
+.site-header__menu-content {
+  opacity: 0;/* WAS: display: none; */
+  transform: scale(1.2);/* 1.2 - content will initially look 20% larger than normal */
+  transition: all .3s ease-out;
+  position: relative;/* needed for -ve z-index */
+  z-index:-10;/* with z -10 any invisable text will no longer be selectable or clickable */
+  padding-top: 90px;
+  text-align: center;
+}
+
+@media (min-width: 800px) {
+
+  .site-header__menu-content {
+    opacity: 1;/* WAS: display: block; */
+    z-index: 1;/* undo settings for hidden text */
+    padding-top: 0;/* undo settings for smaller screens */
+    transform: scale(1);/* undo settings for smaller screens */
+  }
+}
+
+.site-header__menu-content--is-visible {
+  opacity: 1;/* WAS: display: block; */
+  z-index: 1;/* undo settings for hidden text */
+  transform: scale(1);
+}
+
+.primary-nav {
+
+  padding-top: 10px;
+}
+
+@media (min-width: 800px) {
+
+  .primary-nav {
+    padding-top: 0;/* undo setting above for medium+ screens */
+  }
+}
+
+@media (min-width: 800px) {
+
+  .primary-nav--pull-right {
+    float: right;
+  }
+}
+
+.primary-nav ul {
+  margin: 0;
+  padding: 0;/* because I floated them I want the parent element, the unordered list, to use our clearfix */
+}
+
+.primary-nav ul::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.primary-nav li {
+  list-style: none;/* i.e. no bullets */
+  display: inline-block;/* this will allow them to be horizontally centered for smaller screens */
+  padding-right: 7px;
+}
+
+/* smaller gap between list items */
+
+@media (min-width: 800px) {
+
+  .primary-nav li {
+    padding-right: 20px;/* gap between list items */
+    float: left;/* list to be floated to the left so that they will all sit on one line */
+    display: block;/* undo setting above for medium+ screens */
+  }
+}
+
+.primary-nav li:last-child {
+  padding-right: 0;
+}
+
+/*  centered text [on small screens] does not need far-right padding  */
+
+@media (min-width: 800px) {
+
+  .primary-nav li:last-child {
+    padding-right: 20px;
+  }
+}
+
+.primary-nav a {
+  color: #FFF;/* N.B. 'li' color doesn't work, we need to specifically target the 'a' hyperlink(s)! */
+  font-weight: 300;
+  text-decoration: none;
+  display: block;
+  padding: 5px 8px;/* just enough padding to 'center' the text vertically */
+  font-size: .8rem;
+  background-color: rgba(47,85,114, .5);
+}
+
+@media (min-width: 800px) {
+
+  .primary-nav a {
+    padding: 12px 0;/* just enough padding to 'center' the text vertically */
+    font-size: 1rem;
+    background-color: transparent;
   }
 }
 
