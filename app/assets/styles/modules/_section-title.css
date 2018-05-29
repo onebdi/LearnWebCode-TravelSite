@@ -15,6 +15,11 @@
     color: $mainBlue;
   }
 
+  &--less-margin {
+    margin-bottom: 1.3rem;
+    margin-top: 0;
+  }
+
   &__icon {
     display: block;            /* make element a block level element which drop the text after it onto a new line */
     margin-left: auto;         /* now its a block level element, make sure that it stays horizontally centered */

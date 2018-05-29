@@ -1,0 +1,31 @@
+.social-icons {
+  text-align: center;
+
+  &__icon {
+    background-color: $mainOrange;
+    display: inline-block;
+    /* inline-block - all of the media icons will sit on a single line 
+                      but inline block will let us give them a custom height if we need to */
+    margin: 0 5px 5px 5px;
+    width: 33%;             /* tiny screens can only have two icons in one row */
+    height: 72px;
+    position: relative;     /* Allows individual icon's postion absolute (below) to be relative to this class */
+
+    @mixin atSmall {
+      width: 72px;          /* normal icons on small & larger windows */
+      margin: 0 5px;        /* undo right & bottom margin */
+    }
+
+    .icon {
+      display: block;    /* target the span icon element and make sure that it uses display block so it takes up space */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);    /* pull it back up/left half of its own height/width */
+    }
+        /* So this way the automated width and height values from our auotmated sprite setup can actually 
+        be applied to the element. */
+
+  }
+
+}

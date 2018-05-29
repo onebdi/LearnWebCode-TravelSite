@@ -564,6 +564,10 @@ a {
   max-width: 976px;
 }
 
+.wrapper--narrow {
+  max-width: 470px;
+}
+
 /* "Note the way that this image is positioned and sized on small screens. The reason
       the extra spacing exists is because we have a wrapper wrapped inside a wrapper. 
 
@@ -918,6 +922,11 @@ a {
 
 .section-title--blue {
   color: #2f5572;
+}
+
+.section-title--less-margin {
+  margin-bottom: 1.3rem;
+  margin-top: 0;
 }
 
 .section-title__icon {
@@ -1397,6 +1406,91 @@ a {
 .reveal-item--is-visible {
   opacity: 1;/* show */
   transform: scale(1);/* undo style/scale for hidden */
+}
+
+.modal{
+  position: fixed;
+  z-index: 5;
+  background-color: rgba(255, 255, 255, .94);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;                  /* completely hide modal dialog when page is first opened */
+  visibility: hidden;          /* AND visibility off .. stops cursors auto-recognising elements and changing to pointer */
+  transform: scale(1.2);           /* zoom-out effect */
+  transition: all .3s ease-out;
+}
+
+/* zoom-out slowly */
+
+.modal--is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);/* zoom-in effect */
+}
+
+.modal__inner {
+  postion: absolute;/* elements that are postioned absolutely try to shrink wrap their size */
+  width: 100%;/* ... do not shrink */
+  top: 50%;/* push element down */
+  transform: translateY(50%);
+}
+
+.modal__description {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.modal__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 2rem;
+  transform: scaleX(1.2);/* make X wider .. making it squareish */
+  transform-origin: 100% 0;/* preserve 'right: 15px' by transforming from top-left corner  */
+  color: #2f5572;
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  color: #d59541;
+}
+
+.social-icons {
+  text-align: center;
+
+}
+
+.social-icons__icon {
+  background-color: #d59541;
+  display: inline-block;/* inline-block - all of the media icons will sit on a single line 
+                      but inline block will let us give them a custom height if we need to */
+  margin: 0 5px 5px 5px;
+  width: 33%;/* tiny screens can only have two icons in one row */
+  height: 72px;
+  position: relative;/* So this way the automated width and height values from our auotmated sprite setup can actually 
+        be applied to the element. */
+}
+
+/* Allows individual icon's postion absolute (below) to be relative to this class */
+
+@media (min-width: 530px) {
+
+  .social-icons__icon {
+    width: 72px;/* normal icons on small & larger windows */
+    margin: 0 5px;/* undo right & bottom margin */
+  }
+}
+
+.social-icons__icon .icon {
+  display: block;/* target the span icon element and make sure that it uses display block so it takes up space */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);/* pull it back up/left half of its own height/width */
 }
 
 /* Although @import is a native function of CSS 

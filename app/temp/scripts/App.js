@@ -10655,18 +10655,24 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_MobileMenu__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_StickyHeader__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_StickyHeader__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_Modal__ = __webpack_require__(7);
+
+
 
 
 
 
 
 var mobileMenu = new __WEBPACK_IMPORTED_MODULE_0__modules_MobileMenu__["a" /* default */]();
-new __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__["a" /* default */](__WEBPACK_IMPORTED_MODULE_3_jquery___default()(".feature-item"), "85%");         /* example instances of a 'recyclable' module */
-new __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__["a" /* default */](__WEBPACK_IMPORTED_MODULE_3_jquery___default()(".testimonial"), "60%");
-var stickyHeader = new __WEBPACK_IMPORTED_MODULE_2__modules_StickyHeader__["a" /* default */]();
+new __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__["a" /* default */](__WEBPACK_IMPORTED_MODULE_2_jquery___default()(".feature-item"), "85%");         /* example instances of a 'recyclable' module */
+new __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__["a" /* default */](__WEBPACK_IMPORTED_MODULE_2_jquery___default()(".testimonial"), "60%");
+var stickyHeader = new __WEBPACK_IMPORTED_MODULE_3__modules_StickyHeader__["a" /* default */]();
+var modal = new __WEBPACK_IMPORTED_MODULE_4__modules_Modal__["a" /* default */]();
+
+
 
 /***/ }),
 /* 3 */
@@ -11207,6 +11213,64 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 }));
 
 
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+
+
+class Modal {
+  constructor() {
+    this.openModalButton = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".open-modal");
+    this.modal = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".modal");
+    this.closeModalButton = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".modal__close");
+    this.events();                                  /* start listening for clicks as soon as the page loads */
+  }
+
+  events() {
+    // User 'Clicking' the open modal button
+    this.openModalButton.click(this.openModal.bind(this));      /* jquery click method */
+
+    // User 'Clicking' the x close modal button
+    this.closeModalButton.click(this.closeModal.bind(this));    /* bind(this) - stay to what it is currently set to */
+
+    // User 'Pushes' any key press (not just the escape key)
+   __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).keyup(this.keyPressHandler.bind(this));
+
+  }
+
+  keyPressHandler (e) {
+    if (e.keyCode == 27) {                                      /* e.keyCode NOT e.keycode  */
+      // User 'Pushes' escape key
+      this.closeModal();
+    }
+  }
+
+  openModal() {
+    this.modal.addClass("modal--is-visible");                   /*  this.modal NOT this.Modal  */
+    return false;    /* We want to include this because the header element "Get In Touch" button is a link element */
+                     /* As the href is '#', the browser will auto scroll to the top of the page. 
+                        returning False will prevent the default behaviour of scrolling up. */
+  }
+
+  closeModal() {
+    /* by the time these methods actually run javascript's this keyword will have been reset 
+       to the element that was just clicked on .. use 'bind' keyword as above */
+    this.modal.removeClass("modal--is-visible");
+    return false; 
+  }
+
+
+  /* Reminder: addClass activates CSS properties we can never do in C# 
+               e.g. this.Modal.opacity = 1                                    */
+
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (Modal);
 
 /***/ })
 /******/ ]);

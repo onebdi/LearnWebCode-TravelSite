@@ -26,6 +26,8 @@
 @import "modules/_site-header";
 @import "modules/_primary-nav";
 @import "modules/_reveal-item";
+@import "modules/_modal";
+@import "modules/_social-icons";
 
 /* Although @import is a native function of CSS 
    it is better to get postCSS to perform the import instead 
