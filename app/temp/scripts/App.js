@@ -10781,6 +10781,7 @@ class RevealOnScroll {
 
 class StickyHeader {
   constructor() {
+    this.lazyImages = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".lazyload");
     this.siteHeader = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".site-header");
     this.headerTriggerElement = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".large-hero__title");
     this.createHeaderWaypoint();             /* we need to create our waypoint as soon as possible */
@@ -10788,6 +10789,13 @@ class StickyHeader {
     this.headerLinks = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".primary-nav a");
     this.createPageSectionWaypoints();
     this.addSmoothScrolling();
+    this.refreshWaypoints();
+  }
+
+  refreshWaypoints() {
+    this.lazyImages.on('load', function() {
+      Waypoint.refreshAll;      /* All waypoints that currently exist in the web browsers memory           */
+    })                          /* - this includes all waypoints in other modules .. like RevealOnScroll   */
   }
 
   addSmoothScrolling() {
