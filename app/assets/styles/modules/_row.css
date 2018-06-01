@@ -106,9 +106,9 @@
   }
 
   /* Begin Equal Height Rules */
-  &--equal-height-at-medium {
+  .flexbox &--equal-height-at-medium {
     @mixin atMedium {
-      display: flex;
+      display: flex;         /* use flexbox instead of floats */
     }
 
     & > div {
@@ -118,7 +118,7 @@
 
   }
 
-  &--equal-height-at-large {
+  .flexbox &--equal-height-at-large {
     @mixin atLarge {
       display: flex;
     }

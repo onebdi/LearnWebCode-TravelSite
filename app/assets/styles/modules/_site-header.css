@@ -41,7 +41,7 @@
       transform: translateX(0) scale(1.0);   /* undo the centering on larger screens */
 
       .site-header--dark & {                 /* selector will target the logo only when the dark header is being used */
-        transform: scale(0.57);
+        transform: scale(0.56);
       } 
     }
   }
