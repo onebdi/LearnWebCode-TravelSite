@@ -16,9 +16,9 @@ class StickyHeader {
   }
 
   refreshWaypoints() {
-    this.lazyImages.on('load', function() {
-      Waypoint.refreshAll;      /* All waypoints that currently exist in the web browsers memory           */
-    })                          /* - this includes all waypoints in other modules .. like RevealOnScroll   */
+    this.lazyImages.load(function() {
+      Waypoint.refreshAll();    /* All waypoints that currently exist in the web browsers memory           */
+    });                         /* - this includes all waypoints in other modules .. like RevealOnScroll   */
   }
 
   addSmoothScrolling() {

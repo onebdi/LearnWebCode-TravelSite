@@ -21,8 +21,9 @@ class MobileMenu {
   /* if we want the browser to be listening for this event as soon as the page loads we need to 
      manually call this event method as soon as our object is created. */
 
-  toggleTheMenu() {
     /* dynamically add/remove a NEW modifier class on-the-fly .. use Inspect Element */
+
+  toggleTheMenu() {
     this.menuContent.toggleClass("site-header__menu-content--is-visible");  /* chain on jquery method toggleClass */
     this.siteHeader.toggleClass("site-header--is-expanded");
     this.menuIcon.toggleClass("site-header__menu-icon--close-x");
@@ -30,7 +31,6 @@ class MobileMenu {
 }
 
 export default MobileMenu;
-
 
   /* this.toggleTheMenu                                 execute toggleTheMenu
      this.toggleTheMenu.bind                            execute toggleTheMenu and re-bind 'this' to another object

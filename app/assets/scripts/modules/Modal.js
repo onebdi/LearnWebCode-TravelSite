@@ -20,7 +20,7 @@ class Modal {
 
   }
 
-  keyPressHandler (e) {
+  keyPressHandler(e) {
     if (e.keyCode == 27) {                                      /* e.keyCode NOT e.keycode  */
       // User 'Pushes' escape key
       this.closeModal();

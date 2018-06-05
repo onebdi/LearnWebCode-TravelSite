@@ -4,11 +4,11 @@
 
     /* this section will only be done for the FIRST item that gets looped through */
     .icon {
-      background-image: url('/assets/images/sprites/sprite-e79e95cc.svg');
+      background-image: url('../../assets/images/sprites/sprite-cbdfe7ac.svg');
     }
 
     .no-svg .icon {
-      background-image: url('/assets/images/sprites/sprite-e79e95cc.png');
+      background-image: url('../../assets/images/sprites/sprite-cbdfe7ac.png');
     }
 
   .icon--clear-view-escapes {
